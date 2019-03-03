@@ -1,0 +1,41 @@
+<html>
+<body>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
+
+<script type="text/javascript">
+  google.charts.load("current", {packages:["sankey"]});
+  google.charts.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Millions $');
+    data.addRows([
+       [ 'North American Net Sales', 'Consilodated Sales', 141366 ],
+       [ 'North American Net Expenses', 'Operating Expenses', 134099 ],
+       [ 'AWS Net Sales', 'Consilodated Sales', 25655 ],
+       [ 'AWS Net Expenses', 'Operating Expenses', 18359 ],
+       [ 'International Net Sales', 'Consilodated Sales', 65866 ],
+       [ 'International Net Expenses', 'Operating Expenses', 68008 ],
+       [ 'Consilodated Sales', 'Net Income', 10073 ],
+       [ 'Income Tax and Misc', 'Total Expenses', 2357 ],
+       [ 'Operating Expenses', 'Total Expenses' , 220466],
+       [ 'Consilodated Sales', 'Total Expenses', 222814 ],
+
+    ]);
+
+    // Set chart options
+    var options = {
+      width: 800,
+      height: 400,
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+    chart.draw(data, options);
+   }
+</script>
+</body>
+</html>
